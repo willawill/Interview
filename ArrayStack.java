@@ -1,5 +1,5 @@
 public class ArrayStack<T>{
-
+/*The underlying datastructure is array*/
 private final int DEFAULT_CAPACITY = 100;
 private int top;
 private T[] stack;
