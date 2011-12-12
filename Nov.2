@@ -1,0 +1,159 @@
+11. Advantaegs of hash table.
+Different from list or array, hashtable doesn't cache elements linearly but compute index for each element instead. 
+It's good for random access, insertion and deletion. All of those operations can be done in constant time.
+In java, the implementation of hashtable is based on pair of key and value. Data structure of hash table is an array of linkedlist and a hashing function. Each linkedlist performs as a buket to cache items with same key. Each node in the linkedlist has a reference points to the next node that shares the same index. 
+
+Also, hashtable is synchronized, which free programmer from implementing their own sychronization to prevent concurrent gets/puts to the same hashtable. Since 1.5, java uses a concurrentMap and replace put with putifabsent to guard the sychronization.
+
+
+BST:
+	BST has the advantages of both array and linked list: it can do binary search and also it is of dynamic size.
+	BST allows fast enumeration of the items in key order.
+ 	Lookup algorithms get more complicated when there may be multiple items with the same key.
+	support range query
+ 
+Hashtable:
+	lookup operation in hashtable is constant.
+	cannot provide ordering
+	do not support range query 
+ 
+Array:
+	allow random access
+	change is hard: need to change the whole structure
+	
+LinkedList:
+	allow easy insertion, extension, resize.
+	do not support random access
+	change is easy: just change the pointer
+
+LinkedList and ArrayList are two different implementations of the List interface. LinkedList implements it with a doubly-linked list. ArrayList implements it with a dynamically resizing array.
+
+As with standard linked list and array operations, the various methods will have different algorithmic runtimes.
+
+For LinkedList
+
+get is O(n)
+add is O(1)
+remove is O(n)
+Iterator.remove is O(1)
+For ArrayList
+
+get is O(1)
+add is O(1) amortized, but O(n) worst-case since the array must be resized and copied
+remove is O(n)
+LinkedList allows for constant-time insertions or removals, but only sequential access of elements. In other words, you can walk the list forwards or backwards, but grabbing an element in the middle takes time proportional to the size of the list.
+
+ArrayLists, on the other hand, allow random access, so you can grab any element in constant time. But adding or removing from anywhere but the end requires shifting all the latter elements over, either to make an opening or fill the gap. Also, if you add more elements than the capacity of the underlying array, a new array (twice the size) is allocated, and the old array is copied to the new one, so adding to an ArrayList is O(n) in the worst case but constant on average.
+
+So depending on the operations you intend to do, you should choose the implementations accordingly. Iterating over either kind of List is practically equally cheap. (Iterating over an ArrayList is technically faster, but unless you're doing something really performance-sensitive, you shouldn't worry about this -- they're both constants.)
+
+Also, if you have large lists, keep in mind that memory usage is also different. Each element of a LinkedList has more overhead since pointers to the next and previous elements are also stored. ArrayLists don't have this overhead. However, ArrayLists take up as much memory as is allocated for the capacity, regardless of whether elements have actually been added.
+
+The default initial capacity of an ArrayList is pretty small (10 from Java 1.4 - 6). But since the underlying implementation is an array, the array must be resized if you add a lot of elements. To avoid the high cost of resizing when you know you're going to add a lot of elements, construct the ArrayList with a higher initial capacity.
+
+It's worth noting that Vector also implements the List interface and is almost identical to ArrayList. The difference is that Vector is synchronized, so it is thread-safe. Because of this, it is also slightly slower than ArrayList. So as far as I understand, most Java programmers avoid Vector in favor of ArrayList since they will probably synchronize explicitly anyway if they care about that.
+
+Binary Trees
+medium complexity to implement (assuming you can't get them from a library)
+inserts are O(logN)
+lookups are O(logN)
+Linked lists (unsorted)
+low complexity to implement
+inserts are O(1)
+lookups are O(N)
+Hash tables
+high complexity to implement
+inserts are O(1) on average
+lookups are O(1) on average
+Edited: fixed expense of linked list insert.
+
+
+16. Write the code for merge sort.
+mergeSort.java
+
+18. What's strategy pattern, when to use it.
+Strategy parttern defines a family of algorithms and encapsulate each algorithm as an object and make them interchangable. 
+It applies to the situation that needs dynamically swap algorithm in an application.
+
+It consists a family of algorithms and a driver called context for client to invoke particular algorithm.
+Scenarios:
+1. When there are lots of related class that only differ in behaviours.
+2. Elminated conditional statements.
+
+Pros: 
+1.elimated conditional statement.
+2. Internal variable isn't exposed to client.
+3. Encapsulated different algorithms in different class enable programmar to use different algorithm independently.
+
+cons:
+1. Need to build class for each algorithm
+2. client must understand each strategy to use particular algorithm.
+
+strategypattern
+Quicksort.java
+class Context{
+ Sort s = null;
+ void sortIn(int[] list){
+	s.sort(list);
+}
+void setSorter(Sort s){
+	this.s = s;
+}
+Sort getSorter(){
+return s;
+}
+
+}
+class client{
+ int[] list ={....};
+ Context context = new Context();
+ context.setSorter(new Quicksort());
+ context.sortIn(list);
+  
+print list;
+
+}
+
+21 Shell Sort. 
+Shell sort is a multi-pass sorting algorithm. Each pass is an insertion sort that consist every h-th elemetns for the fixed h-gap.
+The performance of shell sort heavily depends on the gap sequences it used, and it would be more efficient when the list is partially sorted.
+
+public class shellSort{
+private int[] list;
+public void sort(int[] list){
+	shellSort(list);
+}
+
+public void shellSort(int[] list){
+	int increment = list.length/3 +1;
+	while(increment >1){
+		for (int i = 0; i< increment;i++){
+			insertSort(list, i, increment);
+}
+	increment = increment/3 +1;
+}
+	insertSort(0,1);
+
+}
+
+public void insertSort(int[] list, int start, int increment){
+int j, k, temp;
+for(int i=start + increment; i<list.length;i+=increment){
+	j = i;
+	k = j - increment;
+	if (list[j]<list[k]){
+		temp = list[j];
+		do {
+			list[j] = list[k];
+			j = k;
+			k = j - increment;
+			}while(j != start && list[k] >temp)
+
+	a[j] = temp;
+}
+}
+}
+
+}
+
+} 
