@@ -62,12 +62,11 @@ public class FloydWarshall {
 System.out.println(x);
     // A test case.
       double[][] adjMatrix = {
-        {0, 4, x, 2, 5, x},
-        {4, 0, 2, x, 2, 6},
-        {x, 2, 0, 1,  x, 2},
-        {2, x, 1, 0, -3, x},
-        {5, 2, x, -3, 0, -1},
-        {x, 6, 2, x, -1, 0},
+        {0, 10, x,  5, x},
+        {10, 0, 5, 5,10},
+        {x, 5, 0, x,  x},
+        {5, 5, x, 0, 20},
+        {x, 10,  x, 20, 0},
 
 
       };
