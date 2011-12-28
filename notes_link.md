@@ -1,4 +1,7 @@
 useful links
+
+XOR http://betterexplained.com/articles/swap-two-variables-using-xor/
+
 *Some useful questions(dynamic programming etc.) http://people.csail.mit.edu/bdean/6.046/
 
 equals: http://www.javapractices.com/topic/TopicAction.do?Id=17
