@@ -57,26 +57,30 @@ class LinkedList{
 		previous = null;
 		HashSet table = new HashSet();
 		while (current != null){
-			System.out.println(current.getValue());
 			if (table.contains(current.getValue())) {
 				previous.setNext(current.getNext());
-				current = current.getNext();
-				System.out.println("previous is" + previous.getValue());		
-	}
+		}
 			else{
 				previous = current;
 				table.add(current.getValue());
-				current = current.getNext();
-				//System.out.println("current is" + current.getNext().getValue());
+		}
+			current = current.getNext();
+			
+	}
 }
-}
+	public void removeDupNoHashset(){
+		LinkedListNode current, previous;
 		
-}
+	}
+		
+
 	 public String toString(){
 			LinkedListNode current = head;
-			String output ="";
+			String output ="The elements are ";
 			while (current != null){
-				output += current.getValue();
+				
+				output += " " + current.getValue();
+				current = current.getNext();
 			}
 			return output;
 
@@ -111,15 +115,16 @@ class LinkedList{
 }
 	public static void main(String[] args){
 		LinkedList l = new LinkedList();
-		l.add(1);
-		l.add(2);
-		l.add(3);
-		l.add(1);
-		l.add(4);
-		l.add(5);
-		l.removeDuplicates();
-		int count = l.getSize();
+		 l.add(1);
+		// l.add(2);
+		// l.add(3);
+		// l.add(1);
+		// l.add(4);
+		// l.add(5);
+		// l.removeDuplicates();
+		 int count = l.getSize();
 		System.out.println(l.toString());
+		System.out.println(count);
 
 }
 }
