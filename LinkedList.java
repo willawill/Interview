@@ -68,11 +68,41 @@ class LinkedList{
 			
 	}
 }
+public int count = 0;
 	public void removeDupNoHashset(){
+		if (head == null) return;
 		LinkedListNode current, previous;
+		LinkedListNode runner;
+		previous = head;
+		current = previous.getNext();
 		
+		while (current != null){
+			runner = head;	//Look backward to find duplicates.
+			while ( runner != current){
+				if (runner.getValue() == current.getValue()){
+						LinkedListNode temp = current.getNext();
+						previous.setNext(temp);
+						current = temp;
+						break;
+
+				}
+				count ++;
+				runner = runner.getNext();
+
+			}
+
+			if (runner == current){
+				previous = current;
+				current = current.getNext();
+				count ++;
+
+			}
+
+		}		
 	}
 		
+
+
 
 	 public String toString(){
 			LinkedListNode current = head;
@@ -116,15 +146,16 @@ class LinkedList{
 	public static void main(String[] args){
 		LinkedList l = new LinkedList();
 		 l.add(1);
-		// l.add(2);
-		// l.add(3);
-		// l.add(1);
-		// l.add(4);
-		// l.add(5);
-		// l.removeDuplicates();
-		 int count = l.getSize();
+		l.add(2);
+		l.add(3);
+		l.add(1);
+		l.add(4);
+		l.add(5);
+		//l.removeDuplicates();
+		l.removeDupNoHashset();
+
 		System.out.println(l.toString());
-		System.out.println(count);
+		System.out.println(l.count);
 
 }
 }
