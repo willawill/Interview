@@ -1,3 +1,5 @@
+import java.util.*;
+
 class LinkedList{
 	private LinkedListNode head;
 	private int size;
@@ -49,6 +51,36 @@ class LinkedList{
 }
 		return false;
 }
+	public void removeDuplicates(){
+		LinkedListNode current, previous;
+		current = head;
+		previous = null;
+		HashSet table = new HashSet();
+		while (current != null){
+			System.out.println(current.getValue());
+			if (table.contains(current.getValue())) {
+				previous.setNext(current.getNext());
+				current = current.getNext();
+				System.out.println("previous is" + previous.getValue());		
+	}
+			else{
+				previous = current;
+				table.add(current.getValue());
+				current = current.getNext();
+				//System.out.println("current is" + current.getNext().getValue());
+}
+}
+		
+}
+	 public String toString(){
+			LinkedListNode current = head;
+			String output ="";
+			while (current != null){
+				output += current.getValue();
+			}
+			return output;
+
+	}
 
 	public int getSize(){
 		return this.size;
@@ -58,10 +90,7 @@ class LinkedList{
 		Object value;
 		LinkedListNode next;
 	
-	 public LinkedListNode(Object _o,LinkedListNode _next){
-		value = _o;
-		next = _next;
-}
+
 	 public	LinkedListNode(Object _o){
 		value = _o;
 		next = null;
@@ -82,11 +111,15 @@ class LinkedList{
 }
 	public static void main(String[] args){
 		LinkedList l = new LinkedList();
-		l.add(123);
-		l.add(124);
-		l.remove(1);
+		l.add(1);
+		l.add(2);
+		l.add(3);
+		l.add(1);
+		l.add(4);
+		l.add(5);
+		l.removeDuplicates();
 		int count = l.getSize();
-		System.out.println(count);
+		System.out.println(l.toString());
 
 }
 }
