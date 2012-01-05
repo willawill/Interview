@@ -1,6 +1,6 @@
 import java.util.*;
 
-class LinkedList{
+public class LinkedList{
 	private LinkedListNode head;
 	private int size;
 	
@@ -144,10 +144,13 @@ class LinkedList{
 		l.add(5);
 		l.insert(6,2);
 		System.out.println(l.remove(3));
+
 		//l.removeDuplicates();
 		l.removeDupNoHashset();
-		 System.out.println(l.returnKth3(3).getValue());
-		 System.out.println(l.get(2));
+		l.deleteMidEle(4);
+		
+		System.out.println(l.returnKth3(3).getValue());
+		System.out.println(l.get(2));
 		System.out.println(l.toString());
 
 }
@@ -227,5 +230,17 @@ public LinkedListNode returnKth3(int k){
 	return p1;
 
 }
+	public void deleteMidEle(Object s){
+		LinkedListNode newS = new LinkedListNode(s);
+		LinkedListNode temp = newS.getNext();
+		try{
+			newS.setValue(temp.getValue());
+			newS.setNext(temp.getNext());
+			this.size --;
 
+			}
+		catch (NullPointerException e){
+			System.out.println("This may be the last element.");	
+	}
+}
 }
