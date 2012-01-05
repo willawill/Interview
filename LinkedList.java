@@ -24,14 +24,32 @@ class LinkedList{
 		this.size++;
 	}
 }
-	public void add(Object s, int index){
+	public void insert(Object s, int index){
 		LinkedListNode temp = new LinkedListNode(s);
-		LinkedListNode current = head;
-		for( int i = 0; i<index && current.getNext()!=null;i++){
+
+		//Invalid index.It also can be treated as a head.
+		if (index < 0 ){
+			temp.setNext(head);
+			head = temp;	
+			this.size ++;
+		}
+		//Any index exceeds the size will be appended to the tail.
+		else if (index > size){
+			this.add(s);
+		}
+		else{
+			LinkedListNode current = head;
+			LinkedListNode previous = null;
+			for( int i = 0; i < index - 1 && current.getNext() != null ; i++){
 			current = current.getNext();
-}
-		current.setNext(temp);
+
+			}
+		previous = current;
+		current = current.getNext();
+		previous.setNext(temp);
+		temp.setNext(current);
 		this.size++;
+		}
 }
 	public Object get(int index){
 		if (index < 0 || index > this.size){
@@ -118,9 +136,9 @@ class LinkedList{
 		l.add(1);
 		l.add(2);
 		l.add(3);
-		l.add(1);
 		l.add(4);
 		l.add(5);
+		l.insert(6,2);
 		// //l.removeDuplicates();
 		l.removeDupNoHashset();
 		// IntWrapper i = new IntWrapper();
