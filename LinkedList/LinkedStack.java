@@ -39,6 +39,9 @@ public String toString(){
 	return output;
 
 }
+public int getSize(){
+	return count;
+}
 
 public static void main(String[] args){
 	

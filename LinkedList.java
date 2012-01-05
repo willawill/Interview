@@ -94,12 +94,13 @@ class LinkedList{
 	}
 }
 
-	 public String toString(){
+	 @Override public String toString(){
 			LinkedListNode current = this.head;
 			String output ="The elements are ";
 			while (current != null){
 				output += " " + current.getValue();
 				current = current.getNext();
+				System.out.println("22");
 			}
 			return output;
 
@@ -135,22 +136,22 @@ class LinkedList{
 		this.value = _o;
 }
 }
-	public static void main(String[] args){
-		LinkedList l = new LinkedList();
-		l.add(1);
-		l.add(2);
-		l.add(3);
-		l.add(4);
-		l.add(5);
-		l.insert(6,2);
-		System.out.println(l.remove(3));
-		//l.removeDuplicates();
-		l.removeDupNoHashset();
-		 System.out.println(l.returnKth3(3).getValue());
-		 System.out.println(l.get(2));
-		System.out.println(l.toString());
+// 	public static void main(String[] args){
+// 		LinkedList l = new LinkedList();
+// 		l.add(1);
+// 		l.add(2);
+// 		l.add(3);
+// 		l.add(4);
+// 		l.add(5);
+// 		l.insert(6,2);
+// 		System.out.println(l.remove(3));
+// 		//l.removeDuplicates();
+// 		l.removeDupNoHashset();
+// 		 System.out.println(l.returnKth3(3).getValue());
+// 		 System.out.println(l.get(2));
+// 		System.out.println(l.toString());
 
-}
+// }
 public int count = 0;
 	public void removeDupNoHashset(){
 		if (head == null) return;
