@@ -1,63 +1,53 @@
-public class linkedStack(){
+public class LinkedStack{
 
 
-private LinkedNode top;
+private LinkedListNode top;
 private int count;
 
-public linkedStack(){
+public LinkedStack(){
 	count = 0;
 	top = null;
 }
 
-public void push(T element){
-	LinedNode n = new LinkedNode(element);
-	top.setNext(n);
+public void push(Object element){
+	LinkedListNode n = new LinkedListNode(element);
+	n.setNext(top);
 	top = n;
 	count ++;
 }
 
-public T pop(){
+public Object pop(){
 	if (top == null){
-	throw new EmptyCollectionException(“Stack”);
-
+		return null;
 }
-	T element = top.getElement();
+	Object element = top.getValue();
 	top = top.getNext();// top = top.next. Because first points to the next.
 	count --;
 	return element;
 
 }
+public Object peek(){
+	return top.getValue();
+}
+public String toString(){
+	String output="";
+	while(top!=null){
+		output += " " + top.getValue().toString();
+		top = top.getNext();
+
+	}
+	return output;
 
 }
 
-class LinkedNode<T>(){
-
-private LinkedNode<T> next;
-private T element;
-
-public LinkedNode(){
-	next = null;
-	element = null;
-
+public static void main(String[] args){
+	
+	LinkedStack ls = new LinkedStack();
+	ls.push(1);
+	ls.push(2);
+	System.out.println(ls.toString());
 }
 
-public LinkedNode(T element){
-	next = null;
-	this.element = element;
 
 }
-public LinkedNode<T> getNext(){
-	return next;
-}
-public void setNext(LinkedNode<T> n){
-  	this.next = n;
-}
 
-public T getElement(){
-	return element;
-}
-
-public void setElement(T element){
-	this.element = element;
-}
-}
