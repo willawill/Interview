@@ -64,12 +64,16 @@ class LinkedList{
 }
 	public boolean remove(Object s){
 		LinkedListNode current = head;
-		while(current.getNext() != null){
-			if (current.getNext().getValue().equals(s))
-				current.setNext(current.getNext().getNext());
+		LinkedListNode previous = null;
+		while(current != null){
+			if (current.getValue().equals(s)){
+				previous.setNext(current.getNext());
 				this.size --;
 				return true;
-}
+			}
+			previous = current;
+			current = current.getNext();
+	}
 		return false;
 }
 	public void removeDuplicates(){
@@ -139,6 +143,7 @@ class LinkedList{
 		l.add(4);
 		l.add(5);
 		l.insert(6,2);
+		System.out.println(l.remove(3));
 		// //l.removeDuplicates();
 		l.removeDupNoHashset();
 		// IntWrapper i = new IntWrapper();
