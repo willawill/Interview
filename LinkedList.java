@@ -5,18 +5,24 @@ class LinkedList{
 	private int size;
 	
 	public LinkedList(){
-		this.head = new LinkedListNode(null);
+		this.head = null;
 		this.size = 0;
 
 }
 	public void add(Object s){
 		LinkedListNode temp = new LinkedListNode(s);
-		LinkedListNode current  = head;
-		while(current.getNext() != null){
-			current = current.getNext();
-}
+		if (this.size == 0){
+			head = temp;
+			this.size++;
+		}
+		else{
+			LinkedListNode current  = head;
+			while (current.getNext() != null){
+				current = current.getNext();
+		}
 		current.setNext(temp);
 		this.size++;
+	}
 }
 	public void add(Object s, int index){
 		LinkedListNode temp = new LinkedListNode(s);
@@ -32,13 +38,10 @@ class LinkedList{
 			return null;
 }
 		LinkedListNode current = head;
-		for (int i = 0 ; i < index ; i++){
-			if (current.getNext() == null){
-				return null;
-	}
+		for (int i = 1 ; i <= index ; i++){
 			current = current.getNext();
 		
-}
+		}
 		return current.getValue();
 }
 	public boolean remove(Object s){
@@ -67,6 +70,65 @@ class LinkedList{
 			current = current.getNext();
 			
 	}
+}
+
+	 public String toString(){
+			LinkedListNode current = this.head;
+			String output ="The elements are ";
+			while (current != null){
+				output += " " + current.getValue();
+				current = current.getNext();
+			}
+			return output;
+
+	}
+
+	public int getSize(){
+		return this.size;
+}
+	public LinkedListNode getHead(){
+		return this.head;
+	}
+
+	private class LinkedListNode{
+		Object value;
+		LinkedListNode next;
+	
+
+	 public	LinkedListNode(Object _o){
+		value = _o;
+		next = null;
+		
+}
+	public	LinkedListNode getNext(){
+		return next;
+}
+	public void setNext(LinkedListNode node){
+		next = node;
+}
+	public Object getValue(){
+		return value;
+}
+	public void setValue(Object _o){
+		this.value = _o;
+}
+}
+	public static void main(String[] args){
+		LinkedList l = new LinkedList();
+		l.add(1);
+		l.add(2);
+		l.add(3);
+		l.add(1);
+		l.add(4);
+		l.add(5);
+		// //l.removeDuplicates();
+		l.removeDupNoHashset();
+		// IntWrapper i = new IntWrapper();
+		// LinkedListNode k = l.returnKth2(l.getHead(),2, i);
+		// System.out.println(k.getValue());
+		 System.out.println(l.get(2));
+		System.out.println(l.toString());
+
 }
 public int count = 0;
 	public void removeDupNoHashset(){
@@ -101,61 +163,34 @@ public int count = 0;
 		}		
 	}
 		
-
-
-
-	 public String toString(){
-			LinkedListNode current = head;
-			String output ="The elements are ";
-			while (current != null){
-				
-				output += " " + current.getValue();
-				current = current.getNext();
-			}
-			return output;
+public LinkedListNode returnKth(int k){
+	if ((k < 0)||(k > this.size)){
+		return null;
+	}
+	int index = 0;
+	LinkedListNode current = this.head;
+	while (current != null){
+		if (index == (this.size-k)){
+			return current;
+		}
+		index ++;
+		current = current.getNext();
 
 	}
-
-	public int getSize(){
-		return this.size;
+	return null;
 }
 
-	private class LinkedListNode{
-		Object value;
-		LinkedListNode next;
-	
+private class IntWrapper{
+	public int value = 0;
+}
+public LinkedListNode returnKth2(LinkedListNode node , int k, IntWrapper i){
+	if ((head == null)|| k < 0) return null;
+	LinkedListNode n = returnKth2(head.getNext(),k, i);
+	i.value = i.value + 1;	
+	 if ( i.value == k){
+	 	return node;
+	 }
+	return n;
+}
 
-	 public	LinkedListNode(Object _o){
-		value = _o;
-		next = null;
-		
-}
-	public	LinkedListNode getNext(){
-		return next;
-}
-	public void setNext(LinkedListNode node){
-		next = node;
-}
-	public Object getValue(){
-		return value;
-}
-	public void setValue(Object _o){
-		this.value = _o;
-}
-}
-	public static void main(String[] args){
-		LinkedList l = new LinkedList();
-		 l.add(1);
-		l.add(2);
-		l.add(3);
-		l.add(1);
-		l.add(4);
-		l.add(5);
-		//l.removeDuplicates();
-		l.removeDupNoHashset();
-
-		System.out.println(l.toString());
-		System.out.println(l.count);
-
-}
 }
