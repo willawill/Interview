@@ -144,11 +144,9 @@ class LinkedList{
 		l.add(5);
 		l.insert(6,2);
 		System.out.println(l.remove(3));
-		// //l.removeDuplicates();
+		//l.removeDuplicates();
 		l.removeDupNoHashset();
-		// IntWrapper i = new IntWrapper();
-		// LinkedListNode k = l.returnKth2(l.getHead(),2, i);
-		// System.out.println(k.getValue());
+		 System.out.println(l.returnKth3(3).getValue());
 		 System.out.println(l.get(2));
 		System.out.println(l.toString());
 
@@ -207,13 +205,27 @@ private class IntWrapper{
 	public int value = 0;
 }
 public LinkedListNode returnKth2(LinkedListNode node , int k, IntWrapper i){
-	if ((head == null)|| k < 0) return null;
-	LinkedListNode n = returnKth2(head.getNext(),k, i);
+	if ((node == null)|| k < 0) return null;
+	LinkedListNode n = returnKth2(node.getNext(),k, i);
 	i.value = i.value + 1;	
 	 if ( i.value == k){
 	 	return node;
 	 }
 	return n;
+}
+//Iteratively return the last Kth element.
+public LinkedListNode returnKth3(int k){
+	LinkedListNode p1 = head;
+	LinkedListNode p2 = head;
+	for (int i = 0 ; i < k ; i++){
+		p2 = p2.getNext();
+	}
+	while (p2 != null){
+		p2 = p2.getNext();
+		p1 = p1.getNext();
+	}
+	return p1;
+
 }
 
 }
