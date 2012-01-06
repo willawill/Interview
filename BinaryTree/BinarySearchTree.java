@@ -219,8 +219,16 @@ public class BinarySearchTree{
 		}
 		return result;
 	}
-
-	
+	public int Depth(){
+		return Depth(root);
+	}
+	private int Depth(BSTNode node){
+		int lDepth, rDepth;
+		if (node == null) return 0;
+		lDepth = Depth(node.getLeft());
+		rDepth = Depth(node.getRight());
+		return (lDepth > rDepth ?lDepth:rDepth)+1;
+}
 	public static void main(String[] args){
 		BinarySearchTree bst = new BinarySearchTree();
 		bst.insert(5);
@@ -231,6 +239,7 @@ public class BinarySearchTree{
 		bst.insert(3);
 		bst.insert(7);
 		bst.inorderWalk2();
+		System.out.println(bst.Depth());
 	//	System.out.println(bst.getSize());
 		System.out.println();
 	}
