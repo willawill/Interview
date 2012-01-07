@@ -229,6 +229,71 @@ public class BinarySearchTree{
 		rDepth = Depth(node.getRight());
 		return (lDepth > rDepth ?lDepth:rDepth)+1;
 }
+	public boolean isValid(BSTNode root){
+		if (root ==  null) return true;
+		else
+			return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+	private boolean isBST(BSTNode node, int min, int max){
+		if (node.getLeft() != null) {
+			if (node.getLeft().compareTo(min) < 0 ||!isBST(node.getLeft(), min, node.getKey())){
+				return false;
+			}
+		}
+		if (node.getRight()!=null){
+			if (node.getRight().compareTo(max) > 0 || !isBST(node.getRight(), node.getKey(), max)){
+				return false;
+			}
+
+		}
+		return true;
+	}
+	public boolean isBalanced(BSTNode node){
+		return isBal(root);
+	}
+//Recursively
+	private boolean isBal(BSTNode node){
+		if (node == null) return true;
+		int diff = Depth(node.getLeft()) - Depth(node.getRight());
+		if (Math.abs(diff) > 1) {
+			return false;
+		} 
+		else{
+			return isBal(node.getLeft()) && isBal(node.getRight());
+		}
+	}
+//Iteratively
+	private int getHeight(BSTNode node){
+		if (node ==null) return 0;
+		int lheight = getHeight(node.getLeft());
+		if (lheight == -1){
+			return -1;
+		}
+		int rheight = getHeight(node.getRight());
+		if (rheight == -1){
+			return -1;
+		} 
+		int diff = lheight - rheight;
+		if (Math.abs(diff) > 1){
+			return -1;
+		}
+		else{
+			return Math.max(lheight, rheight) + 1;
+		}
+	
+	}
+	public boolean isBalanced2(BSTNode node){
+		if (getHeight(node) == -1){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	public BSTNode getRoot(){
+		return root;
+	}
+
 	public static void main(String[] args){
 		BinarySearchTree bst = new BinarySearchTree();
 		bst.insert(5);
@@ -237,11 +302,13 @@ public class BinarySearchTree{
 		bst.insert(8);
 		bst.insert(1);
 		bst.insert(3);
-		bst.insert(7);
 		bst.inorderWalk2();
+		BSTNode root = bst.getRoot();
 		System.out.println(bst.Depth());
+		System.out.println("The bst is balanced? " + bst.isBalanced2(root));
 	//	System.out.println(bst.getSize());
 		System.out.println();
+		System.out.println(bst.isValid(root));
 	}
 
 
