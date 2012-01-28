@@ -282,6 +282,7 @@ public class BinarySearchTree{
 		}
 	
 	}
+
 	public boolean isBalanced2(BSTNode node){
 		if (getHeight(node) == -1){
 			return false;
@@ -293,25 +294,9 @@ public class BinarySearchTree{
 	public BSTNode getRoot(){
 		return root;
 	}
-
-	public static void main(String[] args){
-		BinarySearchTree bst = new BinarySearchTree();
-		bst.insert(5);
-		bst.insert(6);
-		bst.insert(2);
-		bst.insert(8);
-		bst.insert(1);
-		bst.insert(3);
-		bst.inorderWalk2();
-		BSTNode root = bst.getRoot();
-		System.out.println(bst.Depth());
-		System.out.println("The bst is balanced? " + bst.isBalanced2(root));
-	//	System.out.println(bst.getSize());
-		System.out.println();
-		System.out.println(bst.isValid(root));
+	public void setRoot(BSTNode n){
+		root = n;	
 	}
-
-
 }
 	class Stack{
 		BSTNode[] array;

@@ -3,12 +3,23 @@ import java.util.*;
 public class LinkedList{
 	private LinkedListNode head;
 	private int size;
-	
 	public LinkedList(){
 		this.head = null;
 		this.size = 0;
 
 }
+	public void reverse(){
+		LinkedListNode current, next, loop;
+		current = head; next = current.getNext(); loop = null;
+		while (next != null){
+			current.setNext(loop);
+			loop = current;
+			current = next;
+			next = next.getNext();
+		}
+		head = current;
+		head.setNext(loop);
+	}
 	public void add(Object s){
 		LinkedListNode temp = new LinkedListNode(s);
 		if (this.size == 0){
@@ -122,12 +133,7 @@ public class LinkedList{
 		l.insert(6,2);
 		System.out.println(l.remove(3));
 
-		//l.removeDuplicates();
-		l.removeDupNoHashset();
-		l.deleteMidEle(4);
-		
-		System.out.println(l.returnKth3(3).getValue());
-		System.out.println(l.get(2));
+		l.reverse();
 		System.out.println(l.toString());
 
 }
@@ -147,7 +153,6 @@ public int count = 0;
 						previous.setNext(temp);
 						current = temp;
 						break;
-
 				}
 				count ++;
 				runner = runner.getNext();
@@ -158,12 +163,10 @@ public int count = 0;
 				previous = current;
 				current = current.getNext();
 				count ++;
-
 			}
-
 		}		
 	}
-		
+	
 public LinkedListNode returnKth(int k){
 	if ((k < 0)||(k > this.size)){
 		return null;

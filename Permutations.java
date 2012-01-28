@@ -34,7 +34,7 @@ public class Permutations {
 }
     public static void main(String[] args) {
 	Permutations p = new Permutations();
-	String alphabet = "Te";
+	String alphabet = "Tee";
 
        p.perm1(alphabet);
     }

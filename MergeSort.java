@@ -12,7 +12,7 @@ public class MergeSort
 
       // fill array with random ints in range 10-99
       for ( int i = 0; i < size; i++ )
-         data[ i ] = 10 + generator.nextInt( 90 );
+         data[ i ] = 10 + gxenerator.nextInt( 90 );
    } // end MergeSort constructor
    
    // calls recursive split method to begin merge sorting
@@ -27,7 +27,7 @@ public class MergeSort
       // test base case; size of array equals 1
       if ( ( high - low ) >= 1 ) // if not base case
       {
-         int middle1 = ( low + high ) / 2; // calculate middle of array
+         int middle1 = ( low + high ) >> 1; // calculate middle of array
          int middle2 = middle1 + 1; // calculate next element over
 
          // output split step
