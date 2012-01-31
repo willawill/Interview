@@ -1,0 +1,24 @@
+ Talked about Struts, Hibernate. Some database design questions. Like what is replication and why would you want it?
+
+A couple of OOP terms to define. Algorithm for checking if a string is correctly opened and closed by a number of brackets.
+
+Make a class diagram of a system that is described in a story. Design a database schema which is basically a composite one and then write a couple of queries.
+
+A boy goes to his grandmother’s house. There he either does yoga in the morning / plays tennis in the evening / does neither. However he does not do both on the same day. We know that 22 days he did either 1 activity. 24 mornings he did nothing. 12 evenings he did nothing. How many min days did he stay there to have done this?
+
+Theory Qs:
+What are the various software design patterns , Explain the OSI model with functions of each layer , what is page faults and thrashing , explain all the normal forms and demonstrate 3NF and BCNF normalisation with a sample database , explain the implementation of heapsort .
+
+iWhat is polymorphism and what are the different kinds of polymorphism and how they can be implemented?
+View Answers (1)
+What is B Tree and B+ tree and what are the difference?
+View Answers (1)
+How the B+ tree is used in the database?
+View Answers (1)
+What is Exception Handling, what are types of Exception Handling and can there be user defined exception handler?
+View Answers (1)
+Mechanism of Try and Catch Block., Finally Block, What happens when there is a return statement in a catch block or in a finally block, where does the control go back?
+
+Questions on java architecture,garbage collection
+
+What do you consider the most difficult challenge in developing enterprise software and why
