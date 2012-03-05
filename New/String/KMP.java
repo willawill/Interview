@@ -47,40 +47,23 @@ public class KMP {
         dfa[pat.charAt(0)][0] = 1; 
         for (int X = 0, j = 1; j < M; j++) {
             for (int c = 0; c < R; c++) 
-
                 dfa[c][j] = dfa[c][X];     // Copy mismatch cases. 
             dfa[pat.charAt(j)][j] = j+1;   // Set match case. 
-            X = dfa[pat.charAt(j)][X];     // Update restart state. 
+            X = dfa[pat.charAt(j)][X]; 
+            System.out.println(X);    // Update restart state. 
         } 
-    } 
-
-    // create the DFA from a character array over R-character alphabet
-    public KMP(char[] pattern, int R) {
-        this.R = R;
-        this.pattern = new char[pattern.length];
-        for (int j = 0; j < pattern.length; j++)
-            this.pattern[j] = pattern[j];
-
-        // build DFA from pattern
-        int M = pattern.length;
-        dfa = new int[R][M]; 
-        dfa[pattern[0]][0] = 1; 
-        for (int X = 0, j = 1; j < M; j++) {
-            for (int c = 0; c < R; c++) 
-                dfa[c][j] = dfa[c][X];     // Copy mismatch cases. 
-            dfa[pattern[j]][j] = j+1;      // Set match case. 
-            X = dfa[pattern[j]][X];        // Update restart state. 
-        } 
+            
+ 
     } 
 
     // return offset of first match; N if no match
     public int search(String txt) {
-	for (int r=0; r<dfa.length; r++) {
-     for (int c=0; c<dfa[r].length; c++) {
-         System.out.print(" " + dfa[r][c]);
-     }
-     System.out.println("");
-}
+// 	for (int r=0; r<dfa.length; r++) {
+//      for (int c=0; c<dfa[r].length; c++) {
+//          System.out.print(" " + dfa[r][c]);
+//      }
+//      System.out.println("");
+// }
         // simulate operation of DFA on text
         int M = pat.length();
         int N = txt.length();
@@ -92,33 +75,14 @@ public class KMP {
         return N;                    // not found
     }
 
-
-    // return offset of first match; N if no match
-    public int search(char[] text) {
-
-        // simulate operation of DFA on text
-        int M = pattern.length;
-        int N = text.length;
-        for (int i = 0, j = 0; i < N; i++) {
-            j = dfa[text[i]][j];
-            if (j == M) return i - M + 1;    // found
-        }
-        return N;                            // not found
-    }
-
-
     // test client
     public static void main(String[] args) {
-        String pat = args[0];
-        String txt = args[1];
-        char[] pattern = pat.toCharArray();
-        char[] text    = txt.toCharArray();
-
+        String pat = "ABC";
+        String txt = "DEFGHABC";
         KMP kmp1 = new KMP(pat);
         int offset1 = kmp1.search(txt);
 
-        KMP kmp2 = new KMP(pattern, 256);
-        int offset2 = kmp2.search(text);
+
 
         // print results
         System.out.println("text:    " + txt);
