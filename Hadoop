@@ -1,0 +1,35 @@
+随着大数据的盛行，Hadoop也流行起来。我面过很多hadoop相关的公司，包括一线公司
+(hadoop就是公司主要产品)如cloudera, hortonworks, mapr, teradata, greenplum,
+　二线的（使用hadoop)：apple, expedia，comScore. 当然还有很多公司facebook,
+twitter, baidu, 感觉这块还是机会挺多的，我就把我知道的一些给大家分享一下。
+
+书籍和paper
+<Hadoop: The Definitive Guide>: 里面内容非常好，既有高屋建瓴，又有微观把握，
+比如mapreduce各个子阶段，经常问道join在里面也有代码实现，
+google的三量马车，GFS, MapReduce, BigTable
+
+入门：
+知道MapReduce大致流程，map, shuffle, reduce
+知道combiner, partition作用，设置compression
+搭建hadoop集群，master/slave 都运行那些服务
+HDFS，replica如何定位
+版本0.20.2->0.20.203->0.20.205, 0.21, 0.23, 1.0
+新旧API不同
+
+进阶：
+Hadoop 参数调优，cluster level: JVM, map/reduce slots, job level: reducer #,
+memory, use combiner? use compression?
+pig latin, Hive　简单语法
+HBase, zookeeper 搭建
+
+最新：
+关注cloudera, hortonworks blog
+next generation MR2框架
+高可靠性,　namenode: avoid single point of failure
+数据流系统：streaming storm(twitter).
+
+演练算法：
+wordcount
+terasort
+字典同位词
+翻译sql语句 select count(x) from a group by b;
