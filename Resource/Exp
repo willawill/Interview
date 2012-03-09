@@ -1,0 +1,123 @@
+ Talked about Struts, Hibernate. Some database design questions. Like what is replication and why would you want it? 
+--When there are huge volumn of data that write and read often, it's expensive to make join upon the request, so denormalization is a good choice to trade of performance with the space.
+
+A couple of OOP terms to define. 
+-Inheritance is the capability of a class to use the properties and methods of another class while adding its own functionality. 
+-Polymorphism is the capability of an action or method to do different things based on the object that it is acting upon. This is the third basic principle of object oriented programming. Overloading, overriding and dynamic method binding are three types of polymorphism.
+-Encapsulation is the ability of an object to be a container (or capsule) for related properties (ie. data variables) and methods (ie. functions). 
+
+
+Algorithm for checking if a string is correctly opened and closed by a number of brackets.//Stack
+import java.util.collections;
+
+Make a class diagram of a system that is described in a story. 
+
+Design a database schema which is basically a composite one and then write a couple of queries.
+
+studentid studentname, student email
+course id, course name
+studentid, courseid, grade
+Pick student who get 90> on particular course
+select distinct T1.studentname from student T1, course T2, grade T3 
+	where T1.studentid = T2.studentid,
+	and   T2.coursename = "lalala",
+	and T3.grade>90
+
+Pick student who takes one course more than once.
+select T1.studentname from db.student T1, db.course T2, db.grade T3
+			where T1.id = T3.studentid,
+			and T2.id = T3.courseid
+			group by T1.id
+			having count(studentname)>1;
+	
+
+
+A boy goes to his grandmother’s house. There he either does yoga in the morning / plays tennis in the evening / does neither. However he does not do both on the same day. We know that 22 days he did either 1 activity. 24 mornings he did nothing. 12 evenings he did nothing. How many min days did he stay there to have done this?
+
+Theory Qs:
+What are the various software design patterns 
+Creation pattern/Behaviour Pattern/Structural pattern/
+Singlton/Factory method/Object pool/Prototype
+Command/Strategy/Visitorlistener/Mediator
+Decoration/Composite
+
+Explain the OSI model with functions of each layer 
+--Open system Interconnect.
+The seven OSI layers are defines as follows (Feig) 1:
+7. Application: Provides different services to the application
+	• File Transfer, Access and Management (FTAM): Provides handling services in
+the network. This includes the movement of files between different systems,
+reading, writing and deletion of remote files, and management of remote file
+storage.
+• Virtual Terminal (VT): Provides services to access applications in different
+remote computer systems through stimulating a real terminal.
+• Electronic Mail and Messaging Handling (MHS): Facilitates the electronic
+exchange of documents.
+• Directory Services (DS): Provides services with the ability to match names with
+addressing information.
+• Common management
+
+6. Presentation: Converts the information
+
+	Data compression can be used to reduce the number of bits that have
+	to be transmitted. Cryptography is frequently required for privacy and authentication.
+
+5. Session: Handles problems which are not communication issues
+
+	Another session service is synchronization. Consider the problems that occur when
+	transferring a file between two machines and the system crashes not being able to
+	complete the transfer. 
+
+4. Transport: Provides end to end communication control
+accept data from the session layer, split it
+up into smaller units, pass it to 2F94network layer, and F8B5 06E4 A169 bits delivered are
+Key fingerprint = AF19 FA27 the 998D FDB5 DE3D ensure that the 4E46
+the same as the bits transmitted without modification, loss or duplication.
+
+3. Network: Routes the information in the network
+2. Data Link: Provides error control
+1. Physical: Connects the entity to the transmission media
+
+
+what is page faults and thrashing 
+A page fault in any operating system will occur when a reference to memory indicates that the actual information has been paged out to disk, and is not available.
+
+Thrashing
+The problem of many page faults occurring in a short time, called “page thrashing,” can drastically cut the performance of a system. 
+you can run fewer programs simultaneously. Or you can try changing the way a large program works to maximize the capability of the operating system to guess which pages won’t be needed. You can achieve this effect by caching values or changing lookup algorithms in large data structures, or sometimes by changing to a memory allocation library which provides an implementation of malloc() that allocates memory more efficiently
+
+Explain all the normal forms and demonstrate 3NF and BCNF normalisation with a sample database 
+
+
+
+Explain the implementation of heapsort .
+
+
+What is polymorphism and what are the different kinds of polymorphism and how they can be implemented?
+--Overloading, overriding. Overloading happens in one class that two methods have identical names with different parameter lists. Overriding happens in parent and child classes, when a child class extends or implements parent's method and redefine the logic of it. They must have the same name, par list and same return type. Be careful about the access identifier , when a parent class is public, the child must be public. Parent class is protected, child class can be public or protected.if the parent class is package, the overriding method is public/protected/package. if the parent method is private, can not be overriden.
+
+What is B Tree and B+ tree and what are the difference?
+View Answers (1)
+How the B+ tree is used in the database?
+--
+
+What is Exception Handling, what are types of Exception Handling and can there be user defined exception handler?
+--Exceptions are blablabla.
+ 
+Structured exception handling like try-catch-finally blocks, hierachry exception (multiple catch blocks, )and exception handling templates, exception enrichment.
+Yes, user can define their own exceptions.Need to extends Throwable, if it's a checked exceptions, need to extends Exception class, if it's a runtime exceptions, need to extends Runtime class.
+
+Mechanism of Try and Catch Block., Finally Block.
+--They are exception handlers in java. Exceptions are violation of JAVA semantic constrain during the runtime. try-clause is used to catch exception, catch-clause is used to handle the exception, like report the exception or give a more informative description. (i.e.define a throwable object to list the exception) Finally block is used to cleanup and free the resourse. The finally block always execute when try block exits.This ensure the finally block execute even an unexpected exception occurs. 
+
+ 
+What happens when there is a return statement in a catch block or in a finally block,
+--Even there is return statement in catch or finally block, the finally block will be executed anyway.The only way it won't is calling System.exit(0) before finally block because it shuts down the JVM first. Another case is when the thread is interrupted.
+ where does the control go back?
+--Do finally and do return.
+Questions on java architecture,garbage collection
+--Gabage collection takes care of freeing dynamically allocated memory that is no longer reference, that's the garbage.
+Objects are created on heap of java.respectivey with the scopes.So any object that eligible to be collected is when all the references to it is null, even if there is cyclic reference. Say object A refers to Object B and B refers to A, they are not garbage only if there are other live reference points to either of them. Java using generational collection. Divide heap into three parts based on objects age. When an object is created, it sits in the Young generation. Promote it to older generation when it survives from GC detection. The longer the object survive from the GC round, the older it is. The GC starts from the root, mark all visited node and swept the unmarked node in the heap. 
+But we should handle it careful about the invisible reference, it may result in memory leak.Java never allow manually operation on GC.
+What do you consider the most difficult challenge in developing enterprise software and why
+--
