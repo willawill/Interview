@@ -12,7 +12,7 @@ public class Div{
         if (divisor == 0) return Integer.MIN_VALUE;
     	int ans = 0;
 		for (int i = 32;i >= 0;i--){
-			//Since every right shift is dividing the num with some powers of 2.
+			
 			if ((dividend >> i) >= divisor){
 				ans += (1 << i);
 				dividend = dividend - (divisor<<i);
