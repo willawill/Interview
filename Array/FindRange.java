@@ -2,7 +2,7 @@ public class FindRange{
 	
 	public static void main(String[] args){
 		String A = "aaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe";
-		FindRange.range(A, 'b');
+		FindRange.range(A, 'e');
 	}
 	public static void range(String A, char x){
 		char[] array = A.toCharArray();

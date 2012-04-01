@@ -23,16 +23,19 @@ public class ReverseByte{
 		}
 		System.out.println(new String(chars));
 
-/*Then we make it as an integer.*/
-int c = 15;
+/*Then we make it as an integer.
+* Take every bit from input and put in the output.
+*/
+
+int c = 18;
 int chDst = c & 1; 
-  
- for(i=0; i<7; i++) {
-  chDst <<= 1;
-  c >>= 1;
-  chDst |= c&1;        
+ for(i=0; i<8; i++) {
+ chDst = (chDst <<1)|(c &1);
+	c >>=1;  
   }
  System.out.println(chDst); 
-
+b = 18;
+b = (b * 0x0202020202 & 0x010884422010) % 1023;
+System.out.printn(b);
 	}
 }

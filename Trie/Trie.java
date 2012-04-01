@@ -1,4 +1,5 @@
 import java.lang.String;
+import java.util.*;
 
 public class Trie
 {
@@ -31,7 +32,6 @@ public class Trie
 		t.count = t.count + 1;
 	    }
 	    
-	    System.out.println(t.count);
 	    t = t.myLinks[index];
 	}
 	t.myIsWord = true;
@@ -46,10 +46,10 @@ public class Trie
 	    int index = s[k] - 'a';
 	    if (t.myLinks[index] == null)
 	    {
-		t.myLinks[index] = new Trie();
+			t.myLinks[index] = new Trie();
 	    }
-	    t = t.myLinks[index];
-	    k++;
+		    t = t.myLinks[index];
+		    k++;
 	}
 	t.myIsWord = true;
     }
@@ -84,7 +84,7 @@ public class Trie
 	    {
 		if (t.myLinks[k] != null)
 		{
-		    buffer[index] = (char)(k+'a');
+		    buffer[index] = (char)(k + 'a');
 		    doApply(rec,index+1,buffer,t.myLinks[k]);
 		}
 	    }
@@ -105,11 +105,19 @@ public class Trie
 	}
 	return t.myIsWord;
     }
-
-    /**
-     * @return true iff path from some root to this node is a word
-     * 
-     */
+    public void remove(String s){
+ 		ArrayList<Trie> deleted = new ArrayList<Trie>();
+ 
+    	if (isWord(s)){
+    		Trie t = this;
+    		Trie t2 = null;
+    		for (int i = 0; i < s.length(); i++){
+    			int index = s.charAt(i) - 'a';
+    			t = t.myLinks[index];
+    			}
+    				t.myIsWord = false;
+    		}
+    	}
     
     public boolean isWord()
     {
@@ -130,11 +138,14 @@ public class Trie
     public static void main(String[] args){
     	Trie myTrie = new Trie();
     	myTrie.addString("int");
-    	// myTrie.addString("ant");
-    	// myTrie.addString("att");
-    	// myTrie.addString("bat");
-    	// myTrie.addString("limit");
-    	// System.out.println(myTrie.isWord("ban"));
+    	myTrie.addString("ant");
+    	myTrie.addString("att");
+    	myTrie.addString("bat");
+    	myTrie.addString("limit");
+    	myTrie.addString("limits");
+    	myTrie.addString("limitsation");
+    	myTrie.remove("limit");
+    	System.out.println(myTrie.isWord("limit"));
     	myTrie.Print();	
     }
 }

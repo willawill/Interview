@@ -1,0 +1,55 @@
+http://www.mitbbs.com/article_t/JobHunting/31995121.html
+
+上周五两轮电面，back to back, 刚刚在地铁里接到hr的电话，sigh...
+回馈本版，祝大家好运
+
+第一轮: 第一题Fibonacci数,我跟面试官说这个题目我知道，你要不要问其它的问题，
+他说不用，然后我直接写了迭代的解法, 7~8分钟搞定。
+第二题是：Suppose I give you a dictionary
+of words; the size of the dictionary is finite.  Each word in the 
+dictionary is composed from a set of characters; the size of the alphabet is
+finite. Find the longest word in the dictionary with the property that it 
+can be built one character at a time and at each step is a valid word in the
+dictionary.
+
+e.g.  Dictionary = Webster
+      Alphabet = A-z
+     a -> at -> cat -> chat -> chart -> charts -> …..
+
+估计挂在这道题上面了, 当时说完解法在算复杂度那里纠结了一会儿。先不说解法，打
+算面google的自己想一下能不能很快想出解法。
+
+
+第二轮，第一题MinStack, 我知道可以用两个stack，但是觉得如果直接说显得又是见过了，
+所以先说了在每个element里面维持该元素及其以下所有元素的最小值，所有操作O(1),
+空间O(n), 面试官说可以，然后写代码。但后来还想再说用两个stack的时候面试官就
+直接问下一道了，我也就没提了。第二题是找两个sorted array的intersection，长度m
+和n，刚开始差点写成了union，后来意识到改了过来。写完了分析复杂度O(m+n)，
+interviewer又问如果一个很长另一个很短，怎么优化，我说对短的array里的元素在长
+的元素里binary search，O(nlogm), 因为n << m, 所以应该比O(m+n)要好
+
+在一个平面(N*M的grid）上有W个点，求在这N*M个点中跟W个点距离和最小的一个点。
+似乎这个是个经典题目，一开始没想出来，提示了一下做出来了。
+另外一个问的：
+直接递归法求fib（N）的复杂度是多少
+还有很多杂的，各种数据结构复杂度是多少之类的。
+
+The (NxM) with W points problem is to find median with L1 norm. Let (xi,yi) 
+be the (row,col) index of each point. Sort all xi and Sort all yi, then pick
+median (xi, yi) is your answer.
+
+1. find and store connected component in 0/1 matrix。
+    我用了 color fill algorithm, hash table store every pixel with 1
+    很快写好，面试官表示满意。
+2. even sampling in a sphere, even sampling on sphere surface
+    简单。
+3. 2D point cloud, find a line that has most points on it.
+
+第一题递归, 然后每个相邻的block编号??
+
+第二题是不是选一个垂直角度和一个水平角度就可以取得球面上的点? 球内的就在当前
+的基础上求半径上的一个点? 不用编程吧.大概意思是random()两个角度，再random一个半径，那个半径要开3次方根。
+这样生成的随机点可以均匀的分布在球体里
+
+第三题就是在遍历每个点, 然后计算和其他点的斜率, 经过同一个点的斜率相同的直线
+一定是在同一直线上

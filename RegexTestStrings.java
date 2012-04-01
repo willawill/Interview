@@ -7,6 +7,7 @@ public class RegexTestStrings {
 	public static void main(String[] args) {
 		Pattern pattern = Pattern.compile("\\(?(\\d{3})\\)?[-. ]?(\\d{3})[-. ]?(\\d{4})");
 		Matcher matcher = pattern.matcher(EXAMPLE_TEST);
+		
 		while (matcher.find()) {
 			System.out.print("Start index: " + matcher.start());
 			System.out.print(" End index: " + matcher.end() + " ");

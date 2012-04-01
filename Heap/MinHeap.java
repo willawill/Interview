@@ -17,8 +17,6 @@ public class MinHeap{
 		Node newNode = new Node(value);
 		heapArray.add(size, newNode);
 		heapUp(size++);
-		System.out.println(toString());
-
 		return true;
 	}
 
@@ -28,12 +26,8 @@ public Node remove(){//Return the root;
 		heapArray.remove(size-1);
 		size = size - 1;
 		if (size != 0){
-		heapDown(0);
+			heapDown(0);
 		}
-		// if (heapArray.size() != 0){
-			
-		// 	size = size - 1;
-		// }
 		return root;
 	}
 
@@ -58,14 +52,11 @@ public Node remove(){//Return the root;
 	private void heapDown(int index){
 		int smallerChild = 0;
 		Node top = heapArray.get(index);
-		System.out.println("top " + top.value);
-
 		while (index < heapArray.size()/2){
-			//top = heapArray.get(index);
 			int leftChild = 2 * index + 1;
 			int rightChild = leftChild + 1;
 
-			System.out.println("index " + index );
+
 			if (rightChild < size){
 				smallerChild = (heapArray.get(leftChild).value <= heapArray.get(rightChild).value) ? leftChild:rightChild;
 			}

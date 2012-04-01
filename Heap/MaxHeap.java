@@ -26,10 +26,10 @@ public class MaxHeap{
 
 public Node remove(){//Return the root;
 		Node root = heapArray.get(0);
-		if (heapArray.size() != 0){
-			heapArray.set(0, heapArray.get(size-1));
-			size = size - 1;
-			heapArray.remove(size);
+		heapArray.set(0, heapArray.get(size-1));
+		heapArray.remove(size-1);
+		size = size - 1;
+		if (size != 0){
 			heapDown(0);
 		}
 		return root;
