@@ -1,4 +1,4 @@
-//week typing: uncheck. no type checking until any actual parameters passed.
+//weak typing: uncheck. no type checking until any actual parameters passed.
 /*strong typing:   
 public set(Class<E> c, int s){
 a = (E[]) Array.newInstance(c,s);
