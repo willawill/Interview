@@ -1,7 +1,7 @@
 public class Binarysearch{
 	public static boolean Binarysearch(int[]A, int x, int low, int high){
 		if ((high -low)<1) return false;
-		int mid = (high + low)/2;
+		int mid = low + ((high - low) >> 1);
 		if (x == A[mid]) {
 			return true;
 		}
@@ -18,7 +18,7 @@ public class Binarysearch{
 public static int binarySearch(int[] sorted, int first, int upto, int key) {
     
     while (first < upto) {
-        int mid = (first + upto) / 2;  // Compute mid point.
+        int mid = first+ ((upto- first) >> 1);;  // Compute mid point.
         if (key < sorted[mid]) {
             upto = mid;     // repeat search in bottom half.
         } else if (key > sorted[mid]) {
