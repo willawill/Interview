@@ -1,4 +1,5 @@
-public class bound{
+//Implement a range class called Bound.
+public class Bound{
 
 	public static void range(String A, char x){
 		char[] array = A.toCharArray();
