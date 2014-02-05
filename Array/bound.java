@@ -1,4 +1,6 @@
-//Implement a range class called Bound.
+/*Given a string with consecutive characters. Find the lower bound and upper bound of a particular elements.
+For example: "aaaabbbbccddddfff" the lower bound and upper bound of "f" is 14 and 16.
+*/
 public class Bound{
 
 	public static void range(String A, char x){
@@ -68,8 +70,8 @@ public class Bound{
 	}
 
 	public static void main(String[] args){
-		String A = "abbbbbcccceeeef";
-		bound.range(A,'f');
+		String A = "aaaabbbbccddddfff";
+		Bound.range(A,'f');
 
 	}
 }
