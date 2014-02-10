@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class mergeSort{
+public class MergeSort{
 
 private int[] input;
 private static Random generator = new Random();
