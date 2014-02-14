@@ -4,18 +4,18 @@ public class LinkedListNode{
 	
 
 	 public	LinkedListNode(Object _o){
-		value = _o;
-		next = null;
+		this.value = _o;
+		this.next = null;
 		
 }
 	public	LinkedListNode getNext(){
 		return next;
 }
 	public void setNext(LinkedListNode node){
-		next = node;
+		this.next = node;
 }
 	public Object getValue(){
-		return value;
+		return this.value;
 }
 	public void setValue(Object _o){
 		this.value = _o;

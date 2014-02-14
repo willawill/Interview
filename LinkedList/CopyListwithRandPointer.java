@@ -1,3 +1,5 @@
+// http://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/
+
 import java.util.Random;
 public class CopyListwithRandPointer{
 	
@@ -11,6 +13,7 @@ public class CopyListwithRandPointer{
 		
 		p1 = l.getHead();
 		p2 = l2.getHead();
+
 		while (p1 != null && p2 != null){
 			p2.setRand(p1);
 		}
@@ -27,8 +30,6 @@ public class CopyListwithRandPointer{
 
 }
 
-
-
 	class RandPointerNode{
 
 		int value;
@@ -41,13 +42,14 @@ public class CopyListwithRandPointer{
 			rand = null;
 		}
 
-		public void setRand(LinkedList l){
+		public void setRand(RandPointerNode l){
 			Random generator = new Random();
 			int len = l.getSize();
-			int index = generator.nextInt(len-1);
-			RandPointerNode temp = 
-			for (int i = 0; i <=index; i++){
-
+			int index = generator.nextInt(len - 1);
+			RandPointerNode temp = l.getHead();
+			for (int i = 0; i <= index; i++){
+				temp = l.getNext();
 			}
+			this.rand = temp;
 		}
 	}
